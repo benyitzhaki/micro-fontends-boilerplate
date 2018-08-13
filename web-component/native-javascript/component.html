@@ -1,36 +1,17 @@
-<!-- Defines element markup -->
-<template>
-    <p>native web component</p>
+<template id="user-card-template">
+    <link rel="stylesheet" href="web-component/native-javascript/component.css">
+    <div class="card__user-card-container">
+        <h2 class="card__name">
+            <span class="card__full-name"></span> (<span class="card__user-name"></span>)
+        </h2>
+        <p>
+        (data has been loaded from nba.com). vanilla component
+        </p>
+<!--        <p>Website: <a class="card__website"></a></p>
+        <div class="card__hidden-content">
+            <p class="card__address"></p>
+        </div>
+        <button class="card__details-btn">More Details</button>-->
+    </div>
 </template>
-
-<script>
-    (function(window, document, undefined) {
-
-        // Refers to the "importer", which is index.html
-        var thatDoc = document;
-
-        // Refers to the "importee", which is src/hello-world.html
-        var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
-
-        // Gets content from <template>
-        var template = thisDoc.querySelector('template').content;
-
-        // Creates an object based in the HTML Element prototype
-        var MyElementProto = Object.create(HTMLElement.prototype);
-
-        // Fires when an instance of the element is created
-        MyElementProto.createdCallback = function() {
-            // Creates the shadow root
-            var shadowRoot = this.createShadowRoot();
-
-            // Adds a template clone into shadow root
-            var clone = thatDoc.importNode(template, true);
-            shadowRoot.appendChild(clone);
-        };
-
-        // Registers <hello-world> in the main document
-        window.MyElement = thatDoc.registerElement('web-component-native', {
-            prototype: MyElementProto
-        });
-    })(window, document);
-</script>
+<script src="component.js"></script>
