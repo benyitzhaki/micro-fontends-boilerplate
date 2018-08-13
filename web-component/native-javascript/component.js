@@ -9,8 +9,9 @@ class UserCard extends HTMLElement {
         // Fill the respective areas of the card using DOM manipulation APIs
         // All of our components elements reside under shadow dom. So we created a this.shadowRoot property
         // We use this property to call selectors so that the DOM is searched only under this subtree
-        this.shadowRoot.querySelector('.card__full-name').innerHTML = data.resource;
-        this.shadowRoot.querySelector('.card__user-name').innerHTML = data.parameters.LeagueID;
+        this.shadowRoot.querySelector('.card__full-name').innerHTML = data.resultSets[0].name;
+        this.shadowRoot.querySelector('.card__user-name').innerHTML = "League: " + data.parameters.LeagueID;
+        this.shadowRoot.querySelector('.card__content').innerHTML = data.resultSets[0].rowSet.slice(0, 5).toString();
     }
 
     connectedCallback() {
